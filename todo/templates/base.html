@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'production/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'production/css/style.css' %}" />
+
+    <title>ADE© Relocation TODO</title> <!-- Replace with your desired title -->
+</head>
+<body style="background-color: #34ebe1;">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'todo:index' %}">
+            <h1 style="font-size: 20px; text-align: center; width: 100%;">ADE© TODO - Relocation</h1> <!-- Centered and 20px font-size -->
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <button type="button" class="btn btn-info me-2">
+                        <a class="nav-link text-white" href="{% url 'todo:index' %}">Add Task</a>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-info me-2">
+                        <a class="nav-link text-white" href="{% url 'todo:list-tasks' %}">List</a>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<script src="{% static 'production/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

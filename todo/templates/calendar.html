@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <!-- Include the calendar library (FullCalendar) via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.0/main.min.js"></script>
+
+  <!-- Calendar container element -->
+  <div id="calendar"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth', // Set the initial view
+        events: [
+          // Iterate through tasks and add them as events
+          {% for task in tasks %}
+            {
+              title: '{{ task.task_name }}', // Use the task_name for the event title
+              start: '{{ task.due_date|date:"Y-m-d" }}', // Use the due_date for the event start date
+              // You can add more event properties as needed
+            },
+          {% endfor %}
+        ],
+        // Configure other calendar options here
+      });
+      calendar.render(); // Render the calendar
+    });
+  </script>
+{% endblock %}
